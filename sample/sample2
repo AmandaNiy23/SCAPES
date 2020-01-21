@@ -1,0 +1,48 @@
+# declare variables
+dci val1
+dci val2
+
+# declare and initialize index
+dci index
+mov 0 index
+
+# declare and initialize num_runs
+dci num_runs
+rdi num_runs
+
+# for loop to perform this process twice
+L3: cmp num_runs index
+jeq L2
+prt index
+
+# nested while loop to read user input
+prt "Program will loop num_runs times"
+L1: prt "Each iteration will loop until val1 and val2 are both 0" 
+rdi val1
+rdi val2
+
+# compound condition val1 == 0 && val2 == 0
+cmp 0 val1
+jmr L1
+jls L1
+
+prt "val1 is 0"
+
+cmp 0 val2
+jmr L1
+jls L1
+
+prt "val2 is 0"
+
+# increment index and jump to start of for loop
+add 1 index
+jmp L3
+
+L2: prt "Success"
+
+# store values in an arr
+dca arr 2
+mov val1 $arr+0
+mov val2 $arr+1
+
+end
